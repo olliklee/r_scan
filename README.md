@@ -333,3 +333,21 @@ class RScanResult {
 }
 
 ```
+
+
+## iOS: Swift Package Manager
+
+This plugin supports Swift Package Manager and CocoaPods.
+
+- Swift Package Manager uses Apple's Vision framework for image-based barcode detection, with Core Image as a QR fallback.
+- CocoaPods retains the existing `ATBarSDK`/ZBar and `ZXingObjC` decoding chain.
+- Live camera scanning continues to use AVFoundation.
+
+The SPM implementation does not need ATBarSDK or ZXingObjC as external packages.
+The Dart API and the live-camera implementation are unchanged.
+
+
+For the Vision-based SPM image scanner, the existing `RScanBarType` values are
+mapped for Aztec, Codabar (iOS 15+), Code 39/93/128, Data Matrix, EAN-8/13,
+ITF/ITF-14, PDF417, QR, UPC-E and GS1 DataBar variants (iOS 15+).
+MaxiCode and UPC/EAN extension do not have a direct Vision mapping.
